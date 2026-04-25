@@ -55,31 +55,31 @@ export default function Services() {
   const [open, setOpen] = useState<Service | null>(null);
 
   return (
-    <section id="servicios" className="py-24 bg-white">
+    <section id="servicios" className="py-24 bg-white dark:bg-[#0f0f0f] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-start justify-between mb-4">
           <div>
-            <h2 className="text-4xl font-black uppercase">
+            <h2 className="text-4xl font-black uppercase dark:text-white">
               NUESTROS <span className="text-blue-500 italic">SERVICIOS</span>
             </h2>
             <div className="w-12 h-0.5 bg-brand-red mt-3" />
           </div>
-          <span className="text-gray-400 font-light text-lg">01 // 03</span>
+          <span className="text-gray-400 dark:text-gray-500 font-light text-lg">01 // 03</span>
         </div>
 
-        <p className="text-gray-500 mb-12 max-w-sm text-sm leading-relaxed">
+        <p className="text-gray-500 dark:text-gray-400 mb-12 max-w-sm text-sm leading-relaxed">
           Equipamiento técnico de vanguardia diseñado para la máxima inmersión y diversión.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((s) => (
             <div key={s.title}>
-              <div className="bg-gray-100 aspect-video w-full mb-4" />
-              <h3 className="font-bold text-sm tracking-wider mb-2">{s.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-3">{s.description}</p>
+              <div className="bg-gray-100 dark:bg-[#1a1a1a] aspect-video w-full mb-4" />
+              <h3 className="font-bold text-sm tracking-wider mb-2 dark:text-white">{s.title}</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-3">{s.description}</p>
               <button
                 onClick={() => setOpen(s)}
-                className="text-xs font-bold tracking-widest text-gray-900 hover:text-brand-red transition-colors cursor-pointer"
+                className="text-xs font-bold tracking-widest text-gray-900 dark:text-gray-200 hover:text-brand-red dark:hover:text-brand-red transition-colors cursor-pointer"
               >
                 VER MÁS →
               </button>
