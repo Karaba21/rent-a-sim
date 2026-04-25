@@ -35,20 +35,20 @@ export default function ServiceModal({ service, onClose }: Props) {
       onClick={onClose}
     >
       <div
-        className="bg-white w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+        className="bg-white dark:bg-zinc-950 w-full max-w-2xl max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Carousel */}
-        <div className="relative aspect-video bg-gray-200 overflow-hidden">
+        <div className="relative aspect-video bg-gray-200 dark:bg-zinc-900 overflow-hidden">
           {Array.from({ length: total }).map((_, i) => (
             <div
               key={i}
-              className={`absolute inset-0 bg-gray-300 transition-opacity duration-300 flex items-center justify-center ${
+              className={`absolute inset-0 bg-gray-300 dark:bg-zinc-800 transition-opacity duration-300 flex items-center justify-center ${
                 i === current ? "opacity-100" : "opacity-0 pointer-events-none"
               }`}
             >
               {/* placeholder — swap with <Image> when ready */}
-              <span className="text-gray-400 text-sm font-medium tracking-widest uppercase">
+              <span className="text-gray-400 dark:text-zinc-600 text-sm font-medium tracking-widest uppercase">
                 Foto {i + 1}
               </span>
             </div>
@@ -101,12 +101,12 @@ export default function ServiceModal({ service, onClose }: Props) {
         {/* Info */}
         <div className="p-8">
           <div className="w-8 h-0.5 bg-brand-red mb-4" />
-          <h2 className="text-2xl font-black uppercase mb-3">{service.title}</h2>
-          <p className="text-gray-600 text-sm leading-relaxed mb-6">{service.details}</p>
+          <h2 className="text-2xl font-black uppercase mb-3 dark:text-white">{service.title}</h2>
+          <p className="text-gray-600 dark:text-zinc-400 text-sm leading-relaxed mb-6">{service.details}</p>
 
           <ul className="space-y-2 mb-8">
             {service.specs.map((spec) => (
-              <li key={spec} className="flex items-start gap-2 text-sm text-gray-700">
+              <li key={spec} className="flex items-start gap-2 text-sm text-gray-700 dark:text-zinc-300">
                 <span className="text-brand-red font-bold mt-0.5">—</span>
                 {spec}
               </li>
