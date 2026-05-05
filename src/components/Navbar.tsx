@@ -57,7 +57,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
           <a
             href="#inicio"
-            className="text-xs font-semibold tracking-widest text-brand-red border-b-2 border-brand-red pb-0.5"
+            className="text-xs font-semibold tracking-widest text-foreground hover:text-brand-red transition-colors"
           >
             INICIO
           </a>
@@ -75,7 +75,7 @@ export default function Navbar() {
           </a>
           <a
             href="#reservas"
-            className="text-xs font-semibold tracking-widest text-foreground hover:text-brand-red transition-colors"
+            className="text-xs font-semibold tracking-widest text-brand-red border-b-2 border-brand-red pb-0.5"
           >
             RESERVA
           </a>
@@ -107,7 +107,7 @@ export default function Navbar() {
           <a
             href="#inicio"
             onClick={toggleMenu}
-            className="text-sm font-semibold tracking-widest text-brand-red"
+            className="text-sm font-semibold tracking-widest text-foreground hover:text-brand-red transition-colors"
           >
             INICIO
           </a>
@@ -128,7 +128,7 @@ export default function Navbar() {
           <a
             href="#reservas"
             onClick={toggleMenu}
-            className="text-sm font-semibold tracking-widest text-foreground hover:text-brand-red transition-colors"
+            className="text-sm font-semibold tracking-widest text-brand-red"
           >
             RESERVA
           </a>

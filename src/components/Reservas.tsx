@@ -1,6 +1,6 @@
 export default function Reservas() {
   return (
-    <section id="reservas" className="py-24 bg-background-secondary transition-colors duration-300">
+    <section id="reservas" className="py-24 bg-background-secondary transition-colors duration-300 scroll-mt-16">
       <div className="max-w-3xl mx-auto px-6">
         <div className="bg-card-bg p-10 md:p-14 border border-border">
           <div className="text-center mb-10">

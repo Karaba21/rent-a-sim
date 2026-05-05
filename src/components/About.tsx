@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section id="nosotros" className="py-10 bg-background transition-colors duration-300">
+    <section id="nosotros" className="py-10 bg-background transition-colors duration-300 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <div>
           <span className="text-xs font-semibold tracking-[0.2em] uppercase text-foreground-tertiary mb-4 block">

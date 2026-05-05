@@ -64,7 +64,7 @@ export default function Services() {
   const [open, setOpen] = useState<Service | null>(null);
 
   return (
-    <section id="servicios" className="py-10 bg-background transition-colors duration-300">
+    <section id="servicios" className="py-10 bg-background transition-colors duration-300 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-start justify-between mb-4">
           <div>
