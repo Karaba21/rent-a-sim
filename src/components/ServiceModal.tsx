@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export type Service = {
   title: string;
   description: string;
   details: string;
   specs: string[];
-  slides: number;
+  images: string[];
 };
 
 type Props = {
@@ -17,7 +18,7 @@ type Props = {
 
 export default function ServiceModal({ service, onClose }: Props) {
   const [current, setCurrent] = useState(0);
-  const total = service.slides;
+  const total = service.images.length || 1;
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -40,35 +41,45 @@ export default function ServiceModal({ service, onClose }: Props) {
       >
         {/* Carousel */}
         <div className="relative aspect-video bg-gray-200 dark:bg-zinc-900 overflow-hidden">
-          {Array.from({ length: total }).map((_, i) => (
-            <div
-              key={i}
-              className={`absolute inset-0 bg-gray-300 dark:bg-zinc-800 transition-opacity duration-300 flex items-center justify-center ${
-                i === current ? "opacity-100" : "opacity-0 pointer-events-none"
-              }`}
-            >
-              {/* placeholder — swap with <Image> when ready */}
-              <span className="text-gray-400 dark:text-zinc-600 text-sm font-medium tracking-widest uppercase">
-                Foto {i + 1}
-              </span>
+          {total === 1 && service.images.length === 0 ? (
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-zinc-800">
+              <svg className="w-10 h-10 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span className="text-zinc-600 text-xs tracking-widest uppercase">Agregar imagen</span>
             </div>
-          ))}
+          ) : (
+            service.images.map((src, i) => (
+              <div
+                key={i}
+                className={`absolute inset-0 transition-opacity duration-300 ${
+                  i === current ? "opacity-100" : "opacity-0 pointer-events-none"
+                }`}
+              >
+                <Image src={src} alt={`${service.title} ${i + 1}`} fill className="object-cover" />
+              </div>
+            ))
+          )}
 
-          {/* Prev / Next */}
-          <button
-            onClick={() => setCurrent((c) => (c - 1 + total) % total)}
-            className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-9 h-9 flex items-center justify-center transition-colors"
-            aria-label="Anterior"
-          >
-            ‹
-          </button>
-          <button
-            onClick={() => setCurrent((c) => (c + 1) % total)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-9 h-9 flex items-center justify-center transition-colors"
-            aria-label="Siguiente"
-          >
-            ›
-          </button>
+          {/* Prev / Next — only when multiple images */}
+          {total > 1 && (
+            <>
+              <button
+                onClick={() => setCurrent((c) => (c - 1 + total) % total)}
+                className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-9 h-9 flex items-center justify-center transition-colors"
+                aria-label="Anterior"
+              >
+                ‹
+              </button>
+              <button
+                onClick={() => setCurrent((c) => (c + 1) % total)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-9 h-9 flex items-center justify-center transition-colors"
+                aria-label="Siguiente"
+              >
+                ›
+              </button>
+            </>
+          )}
 
           {/* Close */}
           <button
@@ -79,23 +90,27 @@ export default function ServiceModal({ service, onClose }: Props) {
             ✕
           </button>
 
-          {/* Dots */}
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
-            {Array.from({ length: total }).map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  i === current ? "bg-white" : "bg-white/40"
-                }`}
-              />
-            ))}
-          </div>
+          {/* Dots — only when multiple images */}
+          {total > 1 && (
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+              {service.images.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    i === current ? "bg-white" : "bg-white/40"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
 
-          {/* Counter */}
-          <span className="absolute top-3 left-3 text-white text-xs font-semibold bg-black/40 px-2 py-1">
-            {current + 1} / {total}
-          </span>
+          {/* Counter — only when multiple images */}
+          {total > 1 && (
+            <span className="absolute top-3 left-3 text-white text-xs font-semibold bg-black/40 px-2 py-1">
+              {current + 1} / {total}
+            </span>
+          )}
         </div>
 
         {/* Info */}

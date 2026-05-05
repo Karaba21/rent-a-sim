@@ -1,11 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import ServiceModal, { type Service } from "./ServiceModal";
 
 const services: Service[] = [
   {
     title: "SIMULADORES DE CARRERAS",
+    images: [
+      "/Imagenes_ia/sim1.webp",
+      "/Imagenes_ia/sim2.webp",
+      "/Imagenes_ia/sim_muchos.webp",
+    ],
     description:
       "Siente la fuerza G y la precisión de un monoplaza con tecnología de simulación profesional.",
     details:
@@ -17,10 +23,14 @@ const services: Service[] = [
       "Vibración háptica sincronizada con telemetría",
       "Compatible con F1, GT3, rally y más",
     ],
-    slides: 3,
   },
   {
     title: "REALIDAD VIRTUAL",
+    images: [
+      "/Imagenes_ia/vr3.webp",
+      "/Imagenes_ia/vr_kid1.webp",
+      "/Imagenes_ia/vr_kids.webp",
+    ],
     description:
       "Experiencias inmersivas 360° que rompen las barreras de lo convencional en tus eventos.",
     details:
@@ -32,10 +42,10 @@ const services: Service[] = [
       "Biblioteca de +20 experiencias disponibles",
       "Técnico dedicado en sitio",
     ],
-    slides: 3,
   },
   {
     title: "CABINA DE FOTOS",
+    images: [],
     description:
       "Captura momentos únicos con nuestras cabinas digitales de alta resolución y filtros Pro.",
     details:
@@ -47,7 +57,6 @@ const services: Service[] = [
       "Galería digital compartible por QR",
       "Impresora de sublimación DNP",
     ],
-    slides: 3,
   },
 ];
 
@@ -55,7 +64,7 @@ export default function Services() {
   const [open, setOpen] = useState<Service | null>(null);
 
   return (
-    <section id="servicios" className="py-24 bg-background transition-colors duration-300">
+    <section id="servicios" className="py-10 bg-background transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-start justify-between mb-4">
           <div>
@@ -74,7 +83,23 @@ export default function Services() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((s) => (
             <div key={s.title}>
-              <div className="bg-background-secondary aspect-video w-full mb-4" />
+              <div className="relative aspect-video w-full mb-4 bg-background-secondary overflow-hidden">
+                {s.images[0] ? (
+                  <Image
+                    src={s.images[0]}
+                    alt={s.title}
+                    fill
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 border border-dashed border-foreground-secondary/30">
+                    <svg className="w-8 h-8 text-foreground-secondary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-foreground-secondary/40 text-xs tracking-widest uppercase">Agregar imagen</span>
+                  </div>
+                )}
+              </div>
               <h3 className="font-bold text-sm tracking-wider mb-2 text-foreground">{s.title}</h3>
               <p className="text-foreground-secondary text-sm leading-relaxed mb-3">{s.description}</p>
               <button

@@ -1,7 +1,7 @@
 export default function Hero() {
   return (
-    <section id="inicio" className="min-h-screen bg-background flex items-center pt-16 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-20">
+    <section id="inicio" className="min-h-screen bg-background flex items-center pt-16 transition-colors duration-300 pb-0">
+      <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-10">
         <div>
           <span className="inline-block text-brand-red text-xs font-semibold tracking-[0.2em] uppercase border border-brand-red px-3 py-1 mb-6">
             High Performance Entertainment
@@ -25,8 +25,12 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Image placeholder */}
-        <div className="bg-background-secondary aspect-video w-full" />
+        {/* Image */}
+        <img
+          src="imagenes_ia/sim1.webp"
+          alt="Simulador"
+          className="w-full rounded-lg shadow-lg object-cover"
+        />
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section id="nosotros" className="py-24 bg-background transition-colors duration-300">
+    <section id="nosotros" className="py-10 bg-background transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <div>
           <span className="text-xs font-semibold tracking-[0.2em] uppercase text-foreground-tertiary mb-4 block">
@@ -37,12 +37,12 @@ export default function About() {
           </div>
         </div>
 
-        {/* Image mosaic placeholders */}
+        {/* Image mosaic */}
         <div className="grid grid-cols-2 gap-3">
-          <div className="bg-red-900 aspect-square" />
-          <div className="bg-blue-900 aspect-square" />
-          <div className="bg-gray-700 aspect-square" />
-          <div className="bg-gray-800 aspect-square" />
+          <img src="Imagenes_ia/sim1.webp" alt="Simulador F1" className="aspect-square object-cover w-full" />
+          <img src="Imagenes_ia/sim2.webp" alt="Simulador en evento" className="aspect-square object-cover w-full" />
+          <img src="Imagenes_ia/sim_vr.webp" alt="Experiencia VR" className="aspect-square object-cover w-full" />
+          <img src="Imagenes_ia/vr_kids.webp" alt="VR para eventos" className="aspect-square object-cover w-full" />
         </div>
       </div>
     </section>
