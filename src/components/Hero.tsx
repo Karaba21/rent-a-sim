@@ -27,7 +27,7 @@ export default function Hero() {
 
         {/* Image */}
         <img
-          src="imagenes_ia/sim1.webp"
+          src="/Imagenes_ia/sim1.webp"
           alt="Simulador"
           className="w-full rounded-lg shadow-lg object-cover"
         />
