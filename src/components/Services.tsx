@@ -15,7 +15,7 @@ const services: Service[] = [
     description:
       "Siente la fuerza G y la precisión de un monoplaza con tecnología de simulación profesional.",
     details:
-      "Nuestros simuladores de carreras replican con exactitud el comportamiento dinámico de un monoplaza de competición. Con asientos de bucket, volante de fuerza directa y pantallas de 180°, cada piloto vive una experiencia única e irrepetible.",
+      "Nuestros simuladores de carreras replican con exactitud el comportamiento dinámico de un monoplaza de competición.",
     specs: [
       "Volante de fuerza directa Fanatec DD Pro",
       "Triple pantalla 27\" a 165Hz",
@@ -45,7 +45,9 @@ const services: Service[] = [
   },
   {
     title: "CABINA DE FOTOS",
-    images: [],
+    images: [
+      "/Imagenes_ia/cabina2.png"
+    ],
     description:
       "Captura momentos únicos con nuestras cabinas digitales de alta resolución y filtros Pro.",
     details:
@@ -82,14 +84,19 @@ export default function Services() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((s) => (
-            <div key={s.title}>
+            <button
+              key={s.title}
+              onClick={() => setOpen(s)}
+              className="text-left group cursor-pointer"
+            >
               <div className="relative aspect-video w-full mb-4 bg-background-secondary overflow-hidden">
                 {s.images[0] ? (
                   <Image
                     src={s.images[0]}
                     alt={s.title}
                     fill
-                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 ) : (
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 border border-dashed border-foreground-secondary/30">
@@ -102,13 +109,10 @@ export default function Services() {
               </div>
               <h3 className="font-bold text-sm tracking-wider mb-2 text-foreground">{s.title}</h3>
               <p className="text-foreground-secondary text-sm leading-relaxed mb-3">{s.description}</p>
-              <button
-                onClick={() => setOpen(s)}
-                className="text-xs font-bold tracking-widest text-foreground hover:text-brand-red transition-colors cursor-pointer"
-              >
+              <span className="text-xs font-bold tracking-widest text-foreground group-hover:text-brand-red transition-colors">
                 VER MÁS →
-              </button>
-            </div>
+              </span>
+            </button>
           ))}
         </div>
       </div>

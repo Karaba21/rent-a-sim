@@ -50,7 +50,14 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 relative">
         <a href="#inicio">
-          <Image src="/logo.webp" alt="Rent a Sim" width={140} height={40} priority />
+          <Image
+            src={theme === "dark" ? "/logo_oscuro.webp" : "/logo_sin_fondo.webp"}
+            alt="Rent a Sim"
+            width={140}
+            height={40}
+            style={{ width: 140, height: "auto" }}
+            priority
+          />
         </a>
 
         {/* Desktop Menu */}

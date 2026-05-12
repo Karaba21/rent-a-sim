@@ -21,6 +21,11 @@ export default function ServiceModal({ service, onClose }: Props) {
   const total = service.images.length || 1;
 
   useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, []);
+
+  useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
       if (e.key === "ArrowLeft") setCurrent((c) => (c - 1 + total) % total);
@@ -56,7 +61,7 @@ export default function ServiceModal({ service, onClose }: Props) {
                   i === current ? "opacity-100" : "opacity-0 pointer-events-none"
                 }`}
               >
-                <Image src={src} alt={`${service.title} ${i + 1}`} fill className="object-cover" />
+                <Image src={src} alt={`${service.title} ${i + 1}`} fill sizes="(max-width: 768px) 100vw, 672px" className="object-cover" />
               </div>
             ))
           )}
@@ -131,7 +136,7 @@ export default function ServiceModal({ service, onClose }: Props) {
           <a
             href="#reservas"
             onClick={onClose}
-            className="inline-block bg-brand-red text-white font-bold tracking-widest uppercase px-8 py-4 hover:bg-red-800 transition-colors text-sm"
+            className="block w-full text-center bg-brand-red text-white font-bold tracking-wide uppercase px-8 py-4 hover:bg-red-800 transition-colors text-sm"
           >
             RESERVAR ESTE SERVICIO
           </a>
