@@ -81,8 +81,14 @@ export default function Navbar() {
             QUIENES SOMOS
           </a>
           <a
+            href="#precios"
+            className="text-xs font-semibold tracking-widest text-foreground hover:text-brand-red transition-colors"
+          >
+            PRECIOS
+          </a>
+          <a
             href="#reservas"
-            className="text-xs font-semibold tracking-widest text-brand-red border-b-2 border-brand-red pb-0.5"
+            className="text-xs font-semibold tracking-widest text-brand-red border border-brand-red px-4 py-1.5 hover:bg-brand-red hover:text-white transition-colors duration-200"
           >
             RESERVA
           </a>
@@ -133,9 +139,16 @@ export default function Navbar() {
             QUIENES SOMOS
           </a>
           <a
+            href="#precios"
+            onClick={toggleMenu}
+            className="text-sm font-semibold tracking-widest text-foreground hover:text-brand-red transition-colors"
+          >
+            PRECIOS
+          </a>
+          <a
             href="#reservas"
             onClick={toggleMenu}
-            className="text-sm font-semibold tracking-widest text-brand-red"
+            className="text-sm font-semibold tracking-widest text-brand-red border border-brand-red px-4 py-1.5 hover:bg-brand-red hover:text-white transition-colors duration-200 self-start"
           >
             RESERVA
           </a>
